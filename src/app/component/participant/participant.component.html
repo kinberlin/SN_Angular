@@ -1,0 +1,118 @@
+<nav class="navbar nabar-light bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: aliceblue;"></h1>
+    <div class="d-flex">
+      <button (click)="clickAddParticipant()" type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#exampleModal" (click)="openModal()" class="btn btn-success">Add Participant</button>
+
+    </div>
+
+  </div>
+</nav>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Age</th>
+      <th scope="col">Email</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Region</th>
+      <th scope="col">Etat</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Participant of ParticipantData">
+      <td>{{Participant.id}}</td>
+      <td>{{Participant.nom}}</td>
+      <td>{{Participant.prenom}}</td>
+      <td>{{Participant.age}}</td>
+      <td>{{Participant.email}}</td>
+      <td>{{Participant.statut}}</td>
+      <td>{{Participant.region}}</td>
+      <td>{{Participant.etat}}</td>
+      <td>{{Participant.cni}}</td>
+      <td>
+        <button (click)="modifierParticipant(Participant)" type="button" class="btn btn-primary" data-toggle="modal"
+          data-target="#exampleModal" (click)="openModal()" class="btn btn-info">Edit</button>
+        <button (click)="deleteParticipant(Participant)" class="btn btn-danger mx-3 ">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un Participant</h5>
+        <button type="button" class="close" data-dismiss="modal"  (click)="doSomeThing()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Nom</label>
+            <input type="text" formControlName="nom" class="form-control" placeholder="Entrez un nom" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Prenom</label>
+            <input type="text" formControlName="prenom" class="form-control" placeholder="Entrez un Prenom" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Age</label>
+            <input type="number" formControlName="age" class="form-control" placeholder="Entrez un age" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">CNI</label>
+            <input type="text" formControlName="cni" class="form-control" placeholder="Entrez le numero de cni" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" formControlName="email" class="form-control" placeholder="Entrez un Email" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Login</label>
+            <input type="text" formControlName="login" class="form-control" placeholder="Entrez un Login" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Password</label>
+            <input type="password" formControlName="mdp" class="form-control" placeholder="Entrez un Mot de Passe"
+              required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Statut</label>
+            <select id="select1" formControlName="statut" class="form-select" required>
+              <option value="elligible">Elligible</option>
+              <option value="Non elligible">Non Elligible</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Region</label>
+            <select id="select1" formControlName="region" class="form-select" required>
+              <option *ngFor="let region of RegionData" [value]="region">{{ region.label }}</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Etat</label>
+            <select id="select1" formControlName="statut" class="form-select" required>
+              <option value="1">Actif</option>
+              <option value="2">Inactif</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer mb-3">
+        <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal"
+          (click)="doSomeThing()">Close</button>
+        <button *ngIf="showAdd" class="btn btn-primary" (click)="postParticipant()">Add</button>
+        <button *ngIf="showUpdate" type="button" class="btn btn-primary" (click)="updateParticipant()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
