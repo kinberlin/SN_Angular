@@ -8,71 +8,37 @@ import { map } from 'rxjs/operators';
 export class ApiService {
   constructor(private http: HttpClient) { }
 /**
- * Region
+ * Abonne
  * API
  * Services 
  * Starts
  */
-  postRegion(data: any) {
-    return this.http.post<any>('http://localhost:8000/api/regions/', data).pipe(
+  postAbonne(data: any) {
+    return this.http.post<any>('http://localhost:8000/api/abonnes/', data).pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  getRegion() {
-    return this.http.get<any>('http://localhost:8000/api/regions/').pipe(
+  getAbonne() {
+    return this.http.get<any>('http://localhost:8000/api/abonnes/').pipe(
       map((res: any) => {
         return res;
       })
     );
   }
 
-  updateRegion(data: any,id:number){
-    return this.http.put<any>('http://localhost:8000/api/regions/'+id,data).pipe(map((res:any)=>{
+  updateAbonne(data: any,id:number){
+    return this.http.put<any>('http://localhost:8000/api/abonnes/'+id,data).pipe(map((res:any)=>{
       return res;
     }))
   }
 
-  deleteRegion(id:number){
-    return this.http.delete<any>("http://localhost:8000/api/regions/"+id).pipe(map((res:any)=>{
+  deleteAbonne(id:number){
+    return this.http.delete<any>("http://localhost:8000/api/abonnes/"+id).pipe(map((res:any)=>{
       return res;
     }))
   }
 
-  /**
- * Participant
- * API
- * Services 
- * Starts
- */
-
-  postParticipant(data: any) {
-    return this.http.post<any>('http://localhost:8000/api/participants/', data).pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
-  }
-
-  getParticipant() {
-    return this.http.get<any>('http://localhost:8000/api/participants/').pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
-  }
-
-  updateParticipant(data: any,id:number){
-    return this.http.put<any>('http://localhost:8000/api/participants/'+id,data).pipe(map((res:any)=>{
-      return res;
-    }))
-  }
-
-  deleteParticipant(id:number){
-    return this.http.delete<any>("http://localhost:8000/api/participants/"+id).pipe(map((res:any)=>{
-      return res;
-    }))
-  }
 }

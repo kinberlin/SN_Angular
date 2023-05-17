@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegionComponent } from './component/region/region.component';
-import { ParticipantComponent } from './component/participant/participant.component';
+import { AbonneComponent } from './component/abonne/abonne.component';
 
 const routes: Routes = [
-  {path:"region_formulaire",component:RegionComponent},
-  {path:"participant_formulaire",component:ParticipantComponent}
+  {path:"abonne",component:AbonneComponent}
 ];
 
 @NgModule({
